@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="status_pernikahan_array">
+    <item>Pilih Status</item>
+    <item>Belum Kawin</item>
+    <item>Kawin</item>
+    <item>Cerai Hidup</item>
+    <item>Cerai Mati</item>
+  </string-array>
+
+</resources>

@@ -13,8 +13,8 @@ data class CitizenModel(
 	val province: String,
 	val district: String,
 	val village: String,
-	val rt: String,
-	val rw: String,
+	val rt: Int,
+	val rw: Int,
 	val gender: String,
 	val maritalStatus: String
 )

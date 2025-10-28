@@ -1,11 +1,11 @@
 package com.ananda.post_4_pmob
 
-
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,28 +46,93 @@ class MainActivity : AppCompatActivity() {
 		citizenRecyclerView.adapter = citizenAdapter
 		
 		saveButton.setOnClickListener {
-			val gender = when (genderGroup.checkedRadioButtonId) {
+			val fullName = fullNameInput.text.toString().trim()
+			val nikText = nationalIdInput.text.toString().trim()
+			val province = provinceInput.text.toString().trim()
+			val district = districtInput.text.toString().trim()
+			val village = villageInput.text.toString().trim()
+			val rtText = rtInput.text.toString()
+			val rwText = rwInput.text.toString()
+			val genderId = genderGroup.checkedRadioButtonId
+			val maritalStatus = maritalStatusSpinner.selectedItem.toString()
+			
+			if (fullName.isEmpty()) {
+				Toast.makeText(this, "Nama tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			if (nikText.isEmpty()) {
+				Toast.makeText(this, "NIK tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			if (nikText.length != 16 || nikText.toLongOrNull() == null) {
+				Toast.makeText(this, "NIK harus berupa 16 digit angka!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			if (province.isEmpty() || district.isEmpty() || village.isEmpty()) {
+				Toast.makeText(this, "Alamat tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			if (rtText.isEmpty() || rwText.isEmpty()) {
+				Toast.makeText(this, "RT dan RW tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			val rtValue = rtText.toIntOrNull()
+			val rwValue = rwText.toIntOrNull()
+			
+			if (rtValue == null || rwValue == null) {
+				Toast.makeText(this, "RT dan RW harus berupa angka!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			if (genderId == -1) {
+				Toast.makeText(this, "Harap pilih jenis kelamin!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			if (maritalStatus.equals("Pilih Status", ignoreCase = true)) {
+				Toast.makeText(this, "Harap pilih status pernikahan!", Toast.LENGTH_SHORT).show()
+				return@setOnClickListener
+			}
+			
+			val gender = when (genderId) {
 				R.id.rbLaki -> "Laki-Laki"
 				R.id.rbPerempuan -> "Perempuan"
 				else -> "-"
 			}
 			
 			val citizen = CitizenModel(
-				fullName = fullNameInput.text.toString(),
-				nationalId = nationalIdInput.text.toString(),
-				province = provinceInput.text.toString(),
-				district = districtInput.text.toString(),
-				village = villageInput.text.toString(),
-				rt = rtInput.text.toString(),
-				rw = rwInput.text.toString(),
+				fullName = fullName,
+				nationalId = nikText,
+				province = province,
+				district = district,
+				village = village,
+				rt = rtValue,
+				rw = rwValue,
 				gender = gender,
-				maritalStatus = maritalStatusSpinner.selectedItem.toString()
+				maritalStatus = maritalStatus
 			)
 			
 			lifecycleScope.launch {
 				db.citizenDao().insertCitizen(citizen)
 				loadCitizenList()
 			}
+			
+			Toast.makeText(this, "Data berhasil disimpan!", Toast.LENGTH_SHORT).show()
+			
+			fullNameInput.text.clear()
+			nationalIdInput.text.clear()
+			provinceInput.text.clear()
+			districtInput.text.clear()
+			villageInput.text.clear()
+			rtInput.text.clear()
+			rwInput.text.clear()
+			genderGroup.clearCheck()
+			maritalStatusSpinner.setSelection(0)
 		}
 		
 		resetButton.setOnClickListener {
@@ -75,6 +140,7 @@ class MainActivity : AppCompatActivity() {
 				db.citizenDao().deleteAllCitizens()
 				loadCitizenList()
 			}
+			Toast.makeText(this, "Semua data dihapus!", Toast.LENGTH_SHORT).show()
 		}
 		
 		loadCitizenList()

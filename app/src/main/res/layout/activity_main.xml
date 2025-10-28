@@ -8,98 +8,89 @@
   tools:context=".MainActivity">
   
   <LinearLayout
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     
-    <!-- Judul -->
     <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
       android:text="Data Penduduk"
       android:textAlignment="center"
-      android:textStyle="bold"
-      android:textSize="22sp"
       android:textColor="#2C2C2C"
-      android:layout_marginBottom="16dp" />
+      android:textSize="22sp"
+      android:textStyle="bold" />
     
-    <!-- Input Nama -->
     <EditText
       android:id="@+id/etNamaLengkap"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="Nama Lengkap"
-      android:inputType="textPersonName"
-      android:layout_marginBottom="8dp" />
+      android:inputType="textPersonName" />
     
-    <!-- Input NIK -->
     <EditText
       android:id="@+id/etNIK"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="NIK"
-      android:inputType="number"
-      android:layout_marginBottom="8dp" />
+      android:inputType="number" />
     
-    <!-- Input Kabupaten -->
     <EditText
       android:id="@+id/etKabupaten"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="Kabupaten"
-      android:inputType="text"
-      android:layout_marginBottom="8dp" />
+      android:inputType="text" />
     
-    <!-- Input Kecamatan -->
     <EditText
       android:id="@+id/etKecamatan"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="Kecamatan"
-      android:inputType="text"
-      android:layout_marginBottom="8dp" />
+      android:inputType="text" />
     
-    <!-- Input Desa -->
     <EditText
       android:id="@+id/etDesa"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="Desa"
-      android:inputType="text"
-      android:layout_marginBottom="8dp" />
+      android:inputType="text" />
     
-    <!-- Input RT -->
     <EditText
       android:id="@+id/etRT"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="RT"
-      android:inputType="number"
-      android:layout_marginBottom="8dp" />
+      android:inputType="number" />
     
-    <!-- Input RW -->
     <EditText
       android:id="@+id/etRW"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
       android:hint="RW"
-      android:inputType="number"
-      android:layout_marginBottom="8dp" />
+      android:inputType="number" />
     
-    <!-- Jenis Kelamin -->
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
       android:text="Jenis Kelamin:"
-      android:textStyle="bold"
-      android:layout_marginTop="8dp" />
+      android:textStyle="bold" />
     
     <RadioGroup
       android:id="@+id/rgGender"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:layout_marginBottom="8dp">
+      android:layout_marginBottom="8dp"
+      android:orientation="horizontal">
       
       <RadioButton
         android:id="@+id/rbLaki"
@@ -114,7 +105,6 @@
         android:text="Perempuan" />
     </RadioGroup>
     
-    <!-- Status Perkawinan -->
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -125,45 +115,45 @@
       android:id="@+id/spStatus"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:entries="@array/status_perkawinan"
-      android:layout_marginBottom="16dp" />
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp"
+      android:entries="@array/status_pernikahan_array"
+      android:spinnerMode="dropdown" />
     
-    <!-- Tombol Aksi -->
     <LinearLayout
-      android:orientation="horizontal"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:gravity="center">
+      android:gravity="center"
+      android:orientation="horizontal">
       
       <Button
         android:id="@+id/btnSimpan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:text="Simpan"
         android:backgroundTint="#4CAF50"
-        android:textColor="@android:color/white"
-        android:layout_marginEnd="8dp" />
+        android:text="Simpan"
+        android:textColor="@android:color/white" />
       
       <Button
         android:id="@+id/btnReset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Reset"
         android:backgroundTint="#F44336"
+        android:text="Reset"
         android:textColor="@android:color/white" />
     </LinearLayout>
     
-    <!-- RecyclerView -->
     <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Daftar Penduduk"
-      android:textStyle="bold"
-      android:textSize="18sp"
       android:layout_marginTop="20dp"
-      android:layout_marginBottom="8dp" />
+      android:layout_marginBottom="8dp"
+      android:text="Daftar Penduduk"
+      android:textSize="18sp"
+      android:textStyle="bold" />
     
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rvPenduduk"
