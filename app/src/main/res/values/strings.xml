@@ -1,3 +1,10 @@
 <resources>
-  <string name="app_name">post-4-pmob</string>
+  <string name="app_name">Data Penduduk</string>
+  
+  <string-array name="status_perkawinan">
+    <item>Belum Kawin</item>
+    <item>Kawin</item>
+    <item>Cerai Hidup</item>
+    <item>Cerai Mati</item>
+  </string-array>
 </resources>

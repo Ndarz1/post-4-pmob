@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:padding="12dp"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="8dp"
+  android:background="@drawable/bg_card">
+  
+  <TextView
+    android:id="@+id/tvName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Nama Lengkap"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:textColor="#212121" />
+  
+  <TextView
+    android:id="@+id/tvId"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="NIK"
+    android:textColor="#424242" />
+  
+  <TextView
+    android:id="@+id/tvAddress"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Alamat"
+    android:textColor="#616161" />
+  
+  <TextView
+    android:id="@+id/tvDetail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Detail"
+    android:textColor="#757575" />
+
+</LinearLayout>
